@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Logowanie się na strone", () => {
+test.describe("Login on website", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
   });
 
-  test("Pełny proces", async ({ page }) => {
+  test("Test E2E", async ({ page }) => {
     const userName = page.locator('[data-test="username"]');
     const userPassword = page.locator('[data-test="password"]');
     const btnLogin = page.locator('[data-test="login-button"]');
@@ -31,40 +31,41 @@ test.describe("Logowanie się na strone", () => {
     const txtTitle = page.locator(".title");
     const successText = page.locator('[data-test="complete-header"]');
 
-    //Logowanie się
+    //Sign in
     await userName.fill("standard_user");
     await userPassword.fill("secret_sauce");
     await btnLogin.click();
 
-    //weryfikacja zalogowania się
+    //verification sign in
     await expect(page).toHaveURL(/.*inventory.html/);
     await expect(txtTitle).toHaveText("Products");
 
     await btnAddCart.click();
 
-    //sprawdzenie czy zaktualizowała sie liczba produktów w koszyku
+    //check update number product in cart
     await expect(cartNumber).toHaveText("1");
 
-    //przejscie do koszyka
+    //go to cart
     await cartLink.click();
     await expect(inCart).toHaveText("Sauce Labs Backpack");
 
     await btnCheckout.click();
 
-    //Dane usera
+    //user data
     await firstName.fill("Jan");
     await lastName.fill("Kowalski");
     await postalCode.fill("37-550");
 
-    //przejście dalej w procesie
+    //Continue process
     await btnContinue.click();
     await btnFinish.click();
 
-    //Sprawdzenie czy wystepuje komunikat kończący
+    //check the shopping completion message
     await expect(successText).toHaveText("Thank you for your order!");
   });
 
-  test("Test negatywnego usera", async ({ page }) => {
+  //TODO
+  test("Test negative", async ({ page }) => {
     const userName = page.locator('[data-test="username"]');
     const userPassword = page.locator('[data-test="password"]');
     const btnLogin = page.locator('[data-test="login-button"]');
