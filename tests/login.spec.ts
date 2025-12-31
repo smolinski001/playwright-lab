@@ -9,7 +9,7 @@ test.describe("Logowanie się na strone", () => {
     //Logowanie się
     const userName = page.locator('[data-test="username"]');
     const userPassword = page.locator('[data-test="password"]');
-    const btnLogin = page.locator('[data-test="login-button-NIE-ISTNIEJE"]');
+    const btnLogin = page.locator('[data-test="login-button"]');
     const btnAddCart = page.locator(
       '[data-test="add-to-cart-sauce-labs-backpack"]'
     );
