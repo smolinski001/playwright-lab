@@ -6,14 +6,19 @@ test.describe("Logowanie się na strone", () => {
   });
 
   test("Pełny proces", async ({ page }) => {
-    //Logowanie się
     const userName = page.locator('[data-test="username"]');
     const userPassword = page.locator('[data-test="password"]');
     const btnLogin = page.locator('[data-test="login-button"]');
+
     const btnAddCart = page.locator(
       '[data-test="add-to-cart-sauce-labs-backpack"]'
     );
+
+    const cartNumber = page.locator('[data-test="shopping-cart-badge"]');
+
     const cartLink = page.locator('[data-test="shopping-cart-link"]');
+    const inCart = page.locator('[data-test="item-4-title-link"]');
+
     const btnCheckout = page.locator('[data-test="checkout"]');
 
     const firstName = page.locator('[data-test="firstName"]');
@@ -26,24 +31,32 @@ test.describe("Logowanie się na strone", () => {
     const txtTitle = page.locator(".title");
     const successText = page.locator('[data-test="complete-header"]');
 
+    //Logowanie się
     await userName.fill("standard_user");
     await userPassword.fill("secret_sauce");
     await btnLogin.click();
 
-    // 5. ASERCJA (Sprawdzenie)
+    //weryfikacja zalogowania się
     await expect(page).toHaveURL(/.*inventory.html/);
     await expect(txtTitle).toHaveText("Products");
 
     await btnAddCart.click();
+
+    //sprawdzenie czy zaktualizowała sie liczba produktów w koszyku
+    await expect(cartNumber).toHaveText("1");
+
+    //przejscie do koszyka
     await cartLink.click();
+    await expect(inCart).toHaveText("Sauce Labs Backpack");
+
     await btnCheckout.click();
 
     //Dane usera
-
     await firstName.fill("Jan");
     await lastName.fill("Kowalski");
     await postalCode.fill("37-550");
 
+    //przejście dalej w procesie
     await btnContinue.click();
     await btnFinish.click();
 
