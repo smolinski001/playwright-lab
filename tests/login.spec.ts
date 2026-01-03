@@ -1,14 +1,16 @@
 import { test, expect } from "@playwright/test";
 
+//Add LoginPage import
+import { LoginPage } from "./pages/LoginPage";
+
 test.describe("Login on website", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
   });
 
   test("Test E2E", async ({ page }) => {
-    const userName = page.locator('[data-test="username"]');
-    const userPassword = page.locator('[data-test="password"]');
-    const btnLogin = page.locator('[data-test="login-button"]');
+    //Redirecting a variable to the LoginPage
+    const loginPage = new LoginPage(page);
 
     const btnAddCart = page.locator(
       '[data-test="add-to-cart-sauce-labs-backpack"]'
@@ -32,9 +34,8 @@ test.describe("Login on website", () => {
     const successText = page.locator('[data-test="complete-header"]');
 
     //Sign in
-    await userName.fill("standard_user");
-    await userPassword.fill("secret_sauce");
-    await btnLogin.click();
+    //New indication of what to do await
+    await loginPage.loginToStore();
 
     //verification sign in
     await expect(page).toHaveURL(/.*inventory.html/);
