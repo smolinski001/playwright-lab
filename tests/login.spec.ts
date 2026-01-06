@@ -37,7 +37,7 @@ test.describe("Login on website", () => {
     await expect(page).toHaveURL(/.*inventory.html/);
 
     //New indication of what to do await
-    await mainPage.addBackpack();
+    await mainPage.addItemToCart("Bike Light");
     await mainPage.goToCart();
 
     //check update number product in cart via MainPage file
