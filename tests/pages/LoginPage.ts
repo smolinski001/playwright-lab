@@ -18,6 +18,10 @@ export class LoginPage {
     this.errorMessage = page.locator('[data-test="error"]');
   }
 
+  async goto() {
+    await this.page.goto("https://www.saucedemo.com/");
+  }
+
   //use a variable
   //not providing hardcoded login strings
   async loginToStore(userName: string, userPassword: string) {
