@@ -1,4 +1,5 @@
-import { test, expect } from "./fixtures/base";
+import { test, expect } from "../fixtures/base";
+import { positiveUser } from "../data/users";
 
 test.describe("Login on website", () => {
   test.beforeEach(async ({ loginPage }) => {
@@ -8,12 +9,14 @@ test.describe("Login on website", () => {
   test("Test E2E", async ({
     page,
     cartPage,
-    checkoutPage,
     finishPage,
-    loginPage,
+    checkoutPage,
+    loginFlow,
     mainPage,
   }) => {
-    await loginPage.loginToStore("standard_user", "secret_sauce");
+    //await loginPage.loginToStore(positiveUser.username, positiveUser.password);
+
+    await loginFlow.loginAs(positiveUser);
 
     //verification sign in
     await expect(page).toHaveURL(/.*inventory.html/);

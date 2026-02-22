@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 //Add LoginPage import
-import { LoginPage } from "./pages/LoginPage";
+import { LoginPage } from "../pages/LoginPage";
 
 test.describe("Login on website", () => {
   test.beforeEach(async ({ page }) => {
@@ -16,7 +16,7 @@ test.describe("Login on website", () => {
 
     //taking locator from LoginPage
     await expect(loginPage.errorMessage).toHaveText(
-      "Epic sadface: Sorry, this user has been locked out."
+      "Epic sadface: Sorry, this user has been locked out.",
     );
   });
 });

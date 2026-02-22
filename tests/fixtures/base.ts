@@ -1,10 +1,14 @@
 import { test as base } from "@playwright/test";
 
+//POM
 import { CartPage } from "../pages/CartPage";
 import { CheckoutPage } from "../pages/CheckoutPage";
 import { FinishPage } from "../pages/FinishPage";
 import { LoginPage } from "../pages/LoginPage";
 import { MainPage } from "../pages/MainPage";
+
+//fixtures
+import { LoginFlow } from "../flows/LoginFlow";
 
 type MyFixtures = {
   cartPage: CartPage;
@@ -12,6 +16,7 @@ type MyFixtures = {
   finishPage: FinishPage;
   loginPage: LoginPage;
   mainPage: MainPage;
+  loginFlow: LoginFlow;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -37,6 +42,11 @@ export const test = base.extend<MyFixtures>({
   mainPage: async ({ page }, use) => {
     const mainPage = new MainPage(page);
     await use(mainPage);
+  },
+
+  loginFlow: async ({ loginPage }, use) => {
+    const loginFlow = new LoginFlow(loginPage);
+    await use(loginFlow);
   },
 });
 
