@@ -1,11 +1,11 @@
 import { test as base } from "@playwright/test";
 
 //POM
-import { CartPage } from "../pages/CartPage";
-import { CheckoutPage } from "../pages/CheckoutPage";
-import { FinishPage } from "../pages/FinishPage";
-import { LoginPage } from "../pages/LoginPage";
-import { MainPage } from "../pages/MainPage";
+import { CartPage } from "@pages/CartPage";
+import { CheckoutPage } from "@pages/CheckoutPage";
+import { FinishPage } from "@pages/FinishPage";
+import { LoginPage } from "@pages/LoginPage";
+import { MainPage } from "@pages/MainPage";
 
 //fixtures
 import { LoginFlow } from "@flows/LoginFlow";

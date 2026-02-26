@@ -1,5 +1,5 @@
-import { MainPage } from "../pages/MainPage";
-import { CartPage } from "../pages/CartPage";
+import { MainPage } from "@pages/MainPage";
+import { CartPage } from "@pages/CartPage";
 
 export class CartFlow {
   constructor(
