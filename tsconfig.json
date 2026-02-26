@@ -4,7 +4,15 @@
     "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["framework/pages/*"],
+      "@flows/*": ["framework/flows/*"],
+      "@fixtures/*": ["framework/fixtures/*"],
+      "@data/*": ["framework/data/*"]
+    }
   },
-  "include": ["tests", "playwright.config.ts"]
+  "include": ["tests", "framework", "playwright.config.ts"]
 }

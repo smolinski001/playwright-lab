@@ -13,7 +13,7 @@ export class MainPage {
     this.page = page;
 
     this.btnAddCart = page.locator(
-      '[data-test="add-to-cart-sauce-labs-backpack"]'
+      '[data-test="add-to-cart-sauce-labs-backpack"]',
     );
     this.cartLink = page.locator('[data-test="shopping-cart-link"]');
     this.cartNumber = page.locator('[data-test="shopping-cart-badge"]');
@@ -25,6 +25,10 @@ export class MainPage {
   }
 
   async goToCart() {
+    await this.cartLink.click();
+  }
+
+  async logOut() {
     await this.cartLink.click();
   }
 

@@ -8,7 +8,7 @@ import { LoginPage } from "../pages/LoginPage";
 import { MainPage } from "../pages/MainPage";
 
 //fixtures
-import { LoginFlow } from "../flows/LoginFlow";
+import { LoginFlow } from "@flows/LoginFlow";
 
 type MyFixtures = {
   cartPage: CartPage;
