@@ -9,8 +9,6 @@ test("Test E2E", async ({
   loginFlow,
   mainPage,
 }) => {
-  //await loginPage.loginToStore(positiveUser.username, positiveUser.password);
-
   await loginFlow.loginAs(positiveUser);
 
   //verification sign in
@@ -20,15 +18,12 @@ test("Test E2E", async ({
   await mainPage.addItemToCart("Bike Light");
   await mainPage.goToCart();
 
-  //check update number product in cart via MainPage file
-  //await expect(mainPage.cartNumber).toHaveText("1");
-
-  await cartPage.CartToStore();
+  await cartPage.cartToStore();
   //user data
   await checkoutPage.proceedToCheckout("Jan", "Kowalski", "37-550");
 
   //check finish shopping
-  await finishPage.FinishShopping();
+  await finishPage.finishShopping();
 
   //check the shopping completion message
   await expect(finishPage.successText).toHaveText("Thank you for your order!");

@@ -7,6 +7,8 @@ export class MainPage {
   readonly cartLink: Locator;
   readonly cartNumber: Locator;
   readonly classProduct: Locator;
+  readonly btnBurger: Locator;
+  readonly logOut: Locator;
 
   //stałe elementy które nie ulegają zmianie na danej stronie
   constructor(page: Page) {
@@ -18,6 +20,8 @@ export class MainPage {
     this.cartLink = page.locator('[data-test="shopping-cart-link"]');
     this.cartNumber = page.locator('[data-test="shopping-cart-badge"]');
     this.classProduct = page.locator(".inventory_item");
+    this.btnBurger = page.locator(".bm-burger-button");
+    this.logOut = page.locator(".bm-item menu-item");
   }
 
   async addBackpack() {
@@ -28,14 +32,18 @@ export class MainPage {
     await this.cartLink.click();
   }
 
-  async logOut() {
-    await this.cartLink.click();
+  async clickBtnBurger() {
+    await this.btnBurger.click();
+  }
+
+  async clicklogOut() {
+    await this.logOut.click();
   }
 
   //Chaining methods
   //dynamiczna metoda która posiada lokatory które mogą się zmieniać
   async addItemToCart(productName: string) {
-    this.classProduct
+    await this.classProduct
       .filter({ hasText: productName })
       .locator("button")
       .click();

@@ -9,6 +9,7 @@ import { MainPage } from "@pages/MainPage";
 
 //fixtures
 import { LoginFlow } from "@flows/LoginFlow";
+import { CartFlow } from "@flows/CartFlow";
 
 type MyFixtures = {
   cartPage: CartPage;
@@ -17,6 +18,7 @@ type MyFixtures = {
   loginPage: LoginPage;
   mainPage: MainPage;
   loginFlow: LoginFlow;
+  cartFlow: CartFlow;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -47,6 +49,11 @@ export const test = base.extend<MyFixtures>({
   loginFlow: async ({ loginPage }, use) => {
     const loginFlow = new LoginFlow(loginPage);
     await use(loginFlow);
+  },
+
+  cartFlow: async ({ mainPage }, use) => {
+    const cartFlow = new CartFlow(mainPage);
+    await use(cartFlow);
   },
 });
 

@@ -1,22 +1,10 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/base";
+import { negativeUser } from "@data/users";
 
-//Add LoginPage import
-import { LoginPage } from "../../framework/pages/LoginPage";
+test("Test negative", async ({ page, loginFlow, loginPage }) => {
+  await loginFlow.loginAs(negativeUser);
 
-test.describe("Login on website", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("https://www.saucedemo.com/");
-  });
-
-  test("Test negative", async ({ page }) => {
-    //Redirecting a variable to the LoginPage
-    const loginPage = new LoginPage(page);
-
-    await loginPage.loginToStore("locked_out_user", "secret_sauce");
-
-    //taking locator from LoginPage
-    await expect(loginPage.errorMessage).toHaveText(
-      "Epic sadface: Sorry, this user has been locked out.",
-    );
-  });
+  await expect(loginPage.errorMessage).toHaveText(
+    "Epic sadface: Sorry, this user has been locked out.",
+  );
 });

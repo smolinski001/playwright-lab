@@ -4,7 +4,7 @@ import { CartPage } from "@pages/CartPage";
 export class CartFlow {
   constructor(
     private mainPage: MainPage,
-    cartPage: CartPage,
+    private cartPage: CartPage,
   ) {}
 
   async addProduct(productName: string) {

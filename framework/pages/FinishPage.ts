@@ -12,7 +12,7 @@ export class FinishPage {
     this.successText = page.locator('[data-test="complete-header"]');
   }
 
-  async FinishShopping() {
+  async finishShopping() {
     await this.btnFinish.click();
   }
 }

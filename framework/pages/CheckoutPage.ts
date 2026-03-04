@@ -1,4 +1,5 @@
 import { type Locator, type Page } from "@playwright/test";
+import { TestUser } from "@data/users";
 
 export class CheckoutPage {
   readonly page: Page;
@@ -19,7 +20,7 @@ export class CheckoutPage {
   async proceedToCheckout(
     firstName: string,
     lastName: string,
-    postalCode: string
+    postalCode: string,
   ) {
     await this.firstName.fill(firstName);
     await this.lastName.fill(lastName);
