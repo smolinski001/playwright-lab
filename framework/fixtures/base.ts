@@ -51,8 +51,8 @@ export const test = base.extend<MyFixtures>({
     await use(loginFlow);
   },
 
-  cartFlow: async ({ mainPage, cartPage }, use) => {
-    const cartFlow = new CartFlow(mainPage, cartPage);
+  cartFlow: async ({ mainPage }, use) => {
+    const cartFlow = new CartFlow(mainPage);
     await use(cartFlow);
   },
 });
