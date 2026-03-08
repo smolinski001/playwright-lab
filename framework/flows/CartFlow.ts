@@ -11,5 +11,7 @@ export class CartFlow {
     await this.mainPage.addItemToCart(productName);
   }
 
-  async goToCart() {}
+  async goToCart() {
+    await this.mainPage.goToCart();
+  }
 }

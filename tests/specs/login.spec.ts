@@ -21,10 +21,9 @@ test("Test E2E", async ({
   await cartPage.cartToStore();
   //user data
   await checkoutPage.proceedToCheckout(
-    checkoutInformation,
-    firstName,
-    "Kowalski",
-    "37-550",
+    checkoutInformation.firstName,
+    checkoutInformation.lastName,
+    checkoutInformation.postalCode,
   );
 
   //check finish shopping
