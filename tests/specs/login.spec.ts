@@ -1,5 +1,5 @@
 import { test, expect } from "@fixtures/base";
-import { positiveUser } from "@data/users";
+import { checkoutInformation, positiveUser } from "@data/users";
 
 test("Test E2E", async ({
   page,
@@ -20,7 +20,12 @@ test("Test E2E", async ({
 
   await cartPage.cartToStore();
   //user data
-  await checkoutPage.proceedToCheckout("Jan", "Kowalski", "37-550");
+  await checkoutPage.proceedToCheckout(
+    checkoutInformation,
+    firstName,
+    "Kowalski",
+    "37-550",
+  );
 
   //check finish shopping
   await finishPage.finishShopping();

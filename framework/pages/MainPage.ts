@@ -21,7 +21,7 @@ export class MainPage {
     this.cartNumber = page.locator('[data-test="shopping-cart-badge"]');
     this.classProduct = page.locator(".inventory_item");
     this.btnBurger = page.locator(".bm-burger-button");
-    this.logOut = page.locator(".bm-item menu-item");
+    this.logOut = page.locator('[data-test="logout-sidebar-link"]');
   }
 
   async addBackpack() {

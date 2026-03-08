@@ -1,7 +1,7 @@
 import { test, expect } from "@fixtures/base";
 import { negativeUser } from "@data/users";
 
-test("Test negative", async ({ page, loginFlow, loginPage }) => {
+test("Test negative", async ({ loginFlow, loginPage }) => {
   await loginFlow.loginAs(negativeUser);
 
   await expect(loginPage.errorMessage).toHaveText(

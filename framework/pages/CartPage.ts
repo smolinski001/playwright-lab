@@ -9,7 +9,7 @@ export class CartPage {
     this.btnCheckout = page.locator('[data-test="checkout"]');
   }
 
-  async CartToStore() {
+  async cartToStore() {
     await this.btnCheckout.click();
   }
 }
