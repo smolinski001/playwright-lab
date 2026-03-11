@@ -6,19 +6,23 @@ import { CheckoutPage } from "@pages/CheckoutPage";
 import { FinishPage } from "@pages/FinishPage";
 import { LoginPage } from "@pages/LoginPage";
 import { MainPage } from "@pages/MainPage";
+import { CompletePage } from "@pages/CompletePage";
 
 //fixtures
 import { LoginFlow } from "@flows/LoginFlow";
 import { CartFlow } from "@flows/CartFlow";
+import { positiveUser } from "@data/users";
 
 type MyFixtures = {
   cartPage: CartPage;
   checkoutPage: CheckoutPage;
+  completePage: CompletePage;
   finishPage: FinishPage;
   loginPage: LoginPage;
   mainPage: MainPage;
   loginFlow: LoginFlow;
   cartFlow: CartFlow;
+  loggedInPage: MainPage;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -30,6 +34,10 @@ export const test = base.extend<MyFixtures>({
   checkoutPage: async ({ page }, use) => {
     const checkoutPage = new CheckoutPage(page);
     await use(checkoutPage);
+  },
+  completePage: async ({ page }, use) => {
+    const completePage = new CompletePage(page);
+    await use(completePage);
   },
   finishPage: async ({ page }, use) => {
     const finishPage = new FinishPage(page);
@@ -54,6 +62,11 @@ export const test = base.extend<MyFixtures>({
   cartFlow: async ({ mainPage }, use) => {
     const cartFlow = new CartFlow(mainPage);
     await use(cartFlow);
+  },
+
+  loggedInPage: async ({ loginFlow, mainPage }, use) => {
+    await loginFlow.loginAs(positiveUser);
+    await use(mainPage);
   },
 });
 
