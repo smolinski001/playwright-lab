@@ -13,7 +13,7 @@ export default defineConfig({
   reporter: [["html"], ["list"]],
 
   use: {
-    baseURL: process.env.BASE_URL || "https://www.saucedemo.com",
+    baseURL: process.env.BASE_URL!,
     headless: true,
     trace: "on-first-retry",
     screenshot: "only-on-failure",

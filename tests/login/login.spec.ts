@@ -23,37 +23,3 @@ test("Test random user", async ({ loginPage }) => {
     "Epic sadface: Username and password do not match any user in this service",
   );
 });
-
-/*
-test("Test E2E", async ({
-  page,
-  cartPage,
-  finishPage,
-  checkoutPage,
-  loginFlow,
-  mainPage,
-}) => {
-  await loginFlow.loginAs(positiveUser);
-
-  //verification sign in
-  await expect(page).toHaveURL(/.*inventory.html/);
-
-  //New indication of what to do await
-  await mainPage.addItemToCart("Bike Light");
-  await mainPage.goToCart();
-
-  await cartPage.cartToStore();
-  //user data
-  await checkoutPage.proceedToCheckout(
-    checkoutInformation.firstName,
-    checkoutInformation.lastName,
-    checkoutInformation.postalCode,
-  );
-
-  //check finish shopping
-  await finishPage.finishShopping();
-
-  //check the shopping completion message
-  await expect(finishPage.successText).toHaveText("Thank you for your order!");
-});
-*/
