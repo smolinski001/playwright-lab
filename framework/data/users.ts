@@ -3,12 +3,12 @@ export type TestUser = {
   password: string;
 };
 export const positiveUser: TestUser = {
-  username: "standard_user",
-  password: "secret_sauce",
+  username: process.env.USER_STANDARD!,
+  password: process.env.USER_PASSWORD!,
 };
 export const negativeUser: TestUser = {
-  username: "locked_out_user",
-  password: "secret_sauce",
+  username: process.env.USER_LOCKED!,
+  password: process.env.USER_PASSWORD!,
 };
 
 export type CheckoutInfo = {

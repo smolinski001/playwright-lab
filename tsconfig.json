@@ -8,6 +8,7 @@
     "types": ["node"],
 
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@pages/*": ["framework/pages/*"],
       "@flows/*": ["framework/flows/*"],

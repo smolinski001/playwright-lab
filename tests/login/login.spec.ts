@@ -16,6 +16,7 @@ test("Test negative user", async ({ loginFlow, loginPage }) => {
 });
 
 test("Test random user", async ({ loginPage }) => {
+  await loginPage.goto();
   await loginPage.loginToStore("qwefsgrdf", "qwfesgrfd");
 
   await expect(loginPage.errorMessage).toHaveText(
