@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/base";
 
 test("Testing API", async ({ request }) => {
   const response = await request.get("https://restful-booker.herokuapp.com/booking");

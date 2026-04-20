@@ -2,8 +2,6 @@ import { type Locator, type Page } from "@playwright/test";
 
 export class MainPage {
   readonly page: Page;
-
-  readonly btnAddCart: Locator;
   readonly cartLink: Locator;
   readonly cartNumber: Locator;
   readonly classProduct: Locator;
@@ -14,18 +12,11 @@ export class MainPage {
   constructor(page: Page) {
     this.page = page;
 
-    this.btnAddCart = page.locator(
-      '[data-test="add-to-cart-sauce-labs-backpack"]',
-    );
     this.cartLink = page.locator('[data-test="shopping-cart-link"]');
     this.cartNumber = page.locator('[data-test="shopping-cart-badge"]');
     this.classProduct = page.locator(".inventory_item");
     this.btnBurger = page.locator(".bm-burger-button");
     this.logOut = page.locator('[data-test="logout-sidebar-link"]');
-  }
-
-  async addBackpack() {
-    await this.btnAddCart.click();
   }
 
   async goToCart() {
@@ -43,9 +34,6 @@ export class MainPage {
   //Chaining methods
   //dynamiczna metoda która posiada lokatory które mogą się zmieniać
   async addItemToCart(productName: string) {
-    await this.classProduct
-      .filter({ hasText: productName })
-      .locator("button")
-      .click();
+    await this.classProduct.filter({ hasText: productName }).locator("button").click();
   }
 }
