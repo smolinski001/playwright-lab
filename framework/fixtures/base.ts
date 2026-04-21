@@ -8,9 +8,11 @@ import { LoginPage } from "@pages/LoginPage";
 import { MainPage } from "@pages/MainPage";
 import { CompletePage } from "@pages/CompletePage";
 
-//fixtures
+//flows
 import { LoginFlow } from "@flows/LoginFlow";
 import { CartFlow } from "@flows/CartFlow";
+
+//data
 import { positiveUser } from "@data/users";
 
 type MyFixtures = {
